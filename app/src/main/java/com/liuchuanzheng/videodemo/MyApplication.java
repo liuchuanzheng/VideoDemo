@@ -7,6 +7,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.rongcloud.rtc.RongRTCEngine;
 import io.rong.imkit.RongIM;
 
 /**
@@ -35,8 +36,12 @@ public class MyApplication extends Application {
             doctor.setToken(tokens[i]);
             dataList.add(doctor);
         }
-        currentDoctor = dataList.get(0);
+        currentDoctor = dataList.get(1);
+        //初始化视频呼叫SDK
         RongIM.init(this);
+        //初始化视频会议模式SDK
+        String cmpServer = "rtccmp.ronghub.com:80";
+        RongRTCEngine.init(getApplicationContext(),cmpServer);
     }
 
     public static String getCurProcessName(Context context) {

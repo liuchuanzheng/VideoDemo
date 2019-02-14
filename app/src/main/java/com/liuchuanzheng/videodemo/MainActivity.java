@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cn.rongcloud.rtc.RongRTCEngine;
+import cn.rongcloud.rtc.RongRTCEngineEventHandler;
+import cn.rongcloud.rtc.engine.view.RongRTCVideoView;
 import io.rong.callkit.RongCallKit;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
@@ -94,8 +97,83 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        setRongYunListener();
         onToMore();
         moreToMore();
+    }
+
+    private void setRongYunListener() {
+        RongRTCEngine.getInstance().setRongRTCEngineEventHandler(new RongRTCEngineEventHandler() {
+            @Override
+            public void onConnectionStateChanged(int i) {
+
+            }
+
+            @Override
+            public void onLeaveComplete(boolean b) {
+
+            }
+
+            @Override
+            public void onUserJoined(String s, String s1, RongRTCEngine.UserType userType, long l, int i) {
+
+            }
+
+            @Override
+            public void onNotifyUserVideoCreated(String userId, String userName, RongRTCEngine.UserType userType, long talkType, int screenSharingStatu) {
+                //使用RongRTCEngine提供的方法创建RongRTCVideoView
+                RongRTCVideoView remoteView = RongRTCEngine.createVideoView(MainActivity.this.getApplicationContext());
+                //创建好的view传递到RongRTCEngine中。RongRTCEngine会把相应的视频加载到此视图中
+                RongRTCEngine.getInstance().setRemoteVideoView(remoteView, userId);
+                //把持有视频的视图加入到本地UI中去
+//                renderViewManager.setVideoView(false,userId,userName, remoteView, userJoinTaikType(talkType));
+            }
+
+            @Override
+            public void onUserLeft(String s) {
+
+            }
+
+            @Override
+            public void OnNotifyUserVideoDestroyed(String s) {
+
+            }
+
+            @Override
+            public void onWhiteBoardURL(String s) {
+
+            }
+
+            @Override
+            public void onNetworkSentLost(int i) {
+
+            }
+
+            @Override
+            public void onNetworkReceiveLost(int i) {
+
+            }
+
+            @Override
+            public void onControlAudioVideoDevice(int i) {
+
+            }
+
+            @Override
+            public void onNotifyControlAudioVideoDevice(String s, RongRTCEngine.RongRTCDeviceType rongRTCDeviceType, boolean b) {
+
+            }
+
+            @Override
+            public void onNotifyCreateWhiteBoard(String s) {
+
+            }
+
+            @Override
+            public void onNotifySharingScreen(String s, boolean b) {
+
+            }
+        });
     }
 
     private void moreToMore() {
@@ -103,11 +181,7 @@ public class MainActivity extends AppCompatActivity {
         btn_moreToMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<String> userIds = new ArrayList<>();
-                userIds.add("10001");
-                userIds.add("10002");
-                RongCallKit.startMultiCall(MainActivity.this,userIds,
-                        RongCallKit.CallMediaType.CALL_MEDIA_TYPE_VIDEO);
+
             }
         });
 
@@ -115,6 +189,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void onToMore() {
         //视频教学
+        btn_onToMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //加入聊天室
+                String rtcToken = "sign=416fc4e3fc54f517bc3c9e667244b695b7aa2d5ak51hidwqk4nob15500432450002e4d0&uid=10001";
+                RongRTCEngine.getInstance().joinChannel("10001", "李四", rtcToken, "10001");
+                RongRTCVideoView localSurface = RongRTCEngine.createVideoView(getApplicationContext());
+                //创建好的view传递到RongRTCEngine中。RongRTCEngine会把相应的视频加载到此视图中
+                RongRTCEngine.getInstance().setLocalVideoView(localSurface);
+            }
+        });
+
     }
 
     /**
