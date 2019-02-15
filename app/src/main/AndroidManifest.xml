@@ -103,6 +103,7 @@
         <activity android:name=".LiveRoleSelectActivity" />
         <activity android:name=".AudienceActivity" />
         <activity android:name=".AnchorActivity" />
+        <activity android:name="cn.rongcloud.rtc.SettingActivity" />
     </application>
 
 </manifest>

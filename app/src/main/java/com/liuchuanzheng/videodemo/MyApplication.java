@@ -44,7 +44,7 @@ public class MyApplication extends Application {
             doctor.setToken(tokens[i]);
             dataList.add(doctor);
         }
-        currentDoctor = dataList.get(1);
+        currentDoctor = dataList.get(2);
         //初始化视频呼叫SDK
         RongIM.init(this);
         //初始化视频会议模式SDK
