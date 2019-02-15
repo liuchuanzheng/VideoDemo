@@ -22,7 +22,7 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/btn_onToMore"
-            android:text="视频教学"
+            android:text="视频直播"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button

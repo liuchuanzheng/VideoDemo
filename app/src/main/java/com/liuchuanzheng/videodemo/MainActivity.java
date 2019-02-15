@@ -1,5 +1,6 @@
 package com.liuchuanzheng.videodemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cn.rongcloud.rtc.MainPageActivity;
 import cn.rongcloud.rtc.RongRTCEngine;
 import cn.rongcloud.rtc.RongRTCEngineEventHandler;
 import cn.rongcloud.rtc.engine.view.RongRTCVideoView;
@@ -94,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                  * @param mediaType 会话媒体类型
                  */
                 RongCallKit.startSingleCall(MainActivity.this, dataList.get(position).getId(), RongCallKit.CallMediaType.CALL_MEDIA_TYPE_VIDEO);
-
             }
         });
         setRongYunListener();
@@ -181,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
         btn_moreToMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -192,12 +194,9 @@ public class MainActivity extends AppCompatActivity {
         btn_onToMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //加入聊天室
-                String rtcToken = "sign=416fc4e3fc54f517bc3c9e667244b695b7aa2d5ak51hidwqk4nob15500432450002e4d0&uid=10001";
-                RongRTCEngine.getInstance().joinChannel("10001", "李四", rtcToken, "10001");
-                RongRTCVideoView localSurface = RongRTCEngine.createVideoView(getApplicationContext());
-                //创建好的view传递到RongRTCEngine中。RongRTCEngine会把相应的视频加载到此视图中
-                RongRTCEngine.getInstance().setLocalVideoView(localSurface);
+                //直播
+                Intent intent = new Intent(MainActivity.this, LiveRoleSelectActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
 

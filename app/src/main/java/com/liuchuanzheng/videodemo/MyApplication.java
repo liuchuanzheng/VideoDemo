@@ -4,10 +4,13 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.rongcloud.rtc.RongRTCEngine;
+import cn.rongcloud.rtc.util.Utils;
 import io.rong.imkit.RongIM;
 
 /**
@@ -23,6 +26,11 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Utils.init(this);
+        // 内测时设置为true ， 发布时修改为false
+        CrashReport.initCrashReport(getApplicationContext(), "ef48d6a01a", true);
+
+
         String[] names = {"张三","李四","王五"};
         String[] ids = {"10000","10001","10002"};
         String[] tokens = {"mz/7mjC+eZzvL5qMB2hnRJPAyyJN3AEs5mavcOXqOeBr5T/5iQDkM///Q6kAbYhPBponaA5H3HO4RLozIfTtCg==",

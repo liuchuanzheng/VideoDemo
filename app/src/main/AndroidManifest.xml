@@ -95,6 +95,14 @@
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/CallActivityTheme" />
+        <activity
+            android:name="cn.rongcloud.rtc.MainPageActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LiveRoleSelectActivity" />
+        <activity android:name=".AudienceActivity" />
+        <activity android:name=".AnchorActivity" />
     </application>
 
 </manifest>

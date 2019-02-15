@@ -89,4 +89,7 @@
     <string name="settings_text_MediaStreamTiny_no">否</string>
     <string name="Opensizestream">开启大小流</string>
     <string name="app_btn_loading">正在初始化</string>
+
+
+    <string name="agora_app_id">196b5fe93f6e48c8a6c6b8b6749bbe98</string>
 </resources>
