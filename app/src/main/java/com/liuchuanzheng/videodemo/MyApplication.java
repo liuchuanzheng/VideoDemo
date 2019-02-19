@@ -31,11 +31,12 @@ public class MyApplication extends Application {
         CrashReport.initCrashReport(getApplicationContext(), "ef48d6a01a", true);
 
 
-        String[] names = {"张三","李四","王五"};
-        String[] ids = {"10000","10001","10002"};
+        String[] names = {"张三","李四","王五","50002"};
+        String[] ids = {"10000","10001","10002","50002"};
         String[] tokens = {"mz/7mjC+eZzvL5qMB2hnRJPAyyJN3AEs5mavcOXqOeBr5T/5iQDkM///Q6kAbYhPBponaA5H3HO4RLozIfTtCg==",
                 "yxi5+1bwqBcf2HI0ziLHuZPAyyJN3AEs5mavcOXqOeBr5T/5iQDkM3ta4uq8NlkZgveManeqVp9kFyck6C+z0w==",
-                "fU5/MlveJHVAxmIFT16hzodK0HMFgbWeEmW7KchUgPd8K/sCSa57Wofg1/ThoKaxSh5iqqOlCxOFyGKUTrfBjA=="};
+                "fU5/MlveJHVAxmIFT16hzodK0HMFgbWeEmW7KchUgPd8K/sCSa57Wofg1/ThoKaxSh5iqqOlCxOFyGKUTrfBjA==",
+                "PuLyVD9d+NImbUY7ML9ZModK0HMFgbWeEmW7KchUgPcOPOik1jvb2WG8T5PGkWx7hW4qVif6HrqFyGKUTrfBjA=="};
         List<Doctor> dataList = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             Doctor doctor = new Doctor();
@@ -44,7 +45,7 @@ public class MyApplication extends Application {
             doctor.setToken(tokens[i]);
             dataList.add(doctor);
         }
-        currentDoctor = dataList.get(2);
+        currentDoctor = dataList.get(0);
         //初始化视频呼叫SDK
         RongIM.init(this);
         //初始化视频会议模式SDK
